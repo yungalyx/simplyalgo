@@ -1,19 +1,32 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
+import { request_backtest } from "../utils/api"
+import { EquityCurveChart } from "../utils/charts"
 
+const StrategyBuilder = () => {
+    const [name, setName] = useState("")
+    const [description, setDescription] = useState("")
+    const [chartData, setChartData] = useState([])
 
-const 
-
-
-export class StrategyBuilder extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            appname: ""
-        }
+    const handleRun = async() => {
+        await request_backtest().then(res => {
+            return res.json()
+        }).then(data => {
+            /*
+            let chartData = Object.entries(data.data).map((a, b) => {
+                return {cash: a, value: b};
+            })
+            console.log(chartData)
+            */
+           console.log(data)
+           setChartData(Object.values(data))
+        })
     }
-
-
-    render() {
-        <div> nothing </div>
-    }
+   
+    return <div> 
+        <button onClick={handleRun}> Test </button>
+        <EquityCurveChart data={chartData} />
+    </div>;
+    
 }
+
+export default StrategyBuilder;

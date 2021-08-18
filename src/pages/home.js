@@ -24,7 +24,7 @@ export default function Home() {
                     <NavbarHeading> Simplyalgo </NavbarHeading>
                     <NavbarDivider />
                     <Button className={Classes.MINIMAL} text="Home" onClick={()=> history.push("/")}/>
-                    <Button className={Classes.MINIMAL} text="Strategies" onClick={()=> history.push('/strategies')}/>
+                    <Button className={Classes.MINIMAL} text="Strategies" onClick={()=> history.push('/project')}/>
                     <Button className={Classes.DARK} text="Sign up" onClick={()=> history.push("/signup")} />
                 </NavbarGroup>
             </Navbar>
