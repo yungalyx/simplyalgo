@@ -11,14 +11,7 @@ const StrategyBuilder = () => {
         await request_backtest().then(res => {
             return res.json()
         }).then(data => {
-            /*
-            let chartData = Object.entries(data.data).map((a, b) => {
-                return {cash: a, value: b};
-            })
-            console.log(chartData)
-            */
-           console.log(data)
-           setChartData(Object.values(data))
+            setChartData(data.data)
         })
     }
    
